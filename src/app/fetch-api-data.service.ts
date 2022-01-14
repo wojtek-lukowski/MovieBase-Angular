@@ -21,6 +21,13 @@ export class UserRegistrationService {
     );
   }
 
+  public userLogin(userDetails: any): Observable<any> {
+    console.log(userDetails);
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -86,6 +93,32 @@ export class UserRegistrationService {
     );
   }
 
+  addToFavs(username: string, title: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.post(apiUrl + 'users/' + username + 'movies' + title, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+  removeFromFavs(username: string, title: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.delete(apiUrl + 'users/' + username + 'movies' + title, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
   removeUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + username, {
@@ -99,11 +132,9 @@ export class UserRegistrationService {
     );
   }
 
-
-  //not finished
   editUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users' + username, {
+    return this.http.put(apiUrl + 'users' + username, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
@@ -113,7 +144,6 @@ export class UserRegistrationService {
       catchError(this.handleError)
     );
   }
-
 
   private extractResponseData(res: Response): any {
     const body = res;
