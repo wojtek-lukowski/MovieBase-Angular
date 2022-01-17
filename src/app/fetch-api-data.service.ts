@@ -4,8 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-const apiUrl = 'https://moviebased.herokuapp.com/movies';
-
+const apiUrl = 'https://moviebased.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,10 +34,7 @@ export class UserRegistrationService {
         {
           Authorization: 'Bearer' + token,
         })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
+    }).pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   getMovie(title: string): Observable<any> {
@@ -145,7 +141,7 @@ export class UserRegistrationService {
     );
   }
 
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
     return body || {};
   }
