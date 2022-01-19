@@ -1,6 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { UserRegistrationService } from '../fetch-api-data.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -15,22 +13,8 @@ export class DescriptionCardComponent implements OnInit {
     public data: {
       title: string;
       description: string;
-    }
-    // public fetchApiData: UserRegistrationService,
-    // public dialogRef: MatDialogRef<DescriptionCardComponent>,
-  ) { }
+    }) { }
 
   ngOnInit(): void {
-    // this.getDescription();
   }
-
-  // getDescription(): void {
-  //   console.log('getting description');
-  //   this.fetchApiData.getMovie().subscribe((resp: any) => {
-  //     this.movies = resp;
-  //     console.log(this.movies);
-  //     return this.movies;
-  //   });
-  // }
-
 }
