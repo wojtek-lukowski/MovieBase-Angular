@@ -43,7 +43,9 @@ export class UserRegistrationService {
     return this.http.get(apiUrl + 'movies/' + title, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          'Content-Type': 'application/json',
+          // Authorization: 'Bearer' + token,
+          Authorization: `Bearer ${token}`
         })
     }).pipe(
       map(this.extractResponseData),
