@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { DescriptionCardComponent } from '../description-card/description-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
+import { GenreCardComponent } from '../genre-card/genre-card.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -54,6 +55,19 @@ export class MovieCardComponent implements OnInit {
         bio,
         birth,
         death
+      },
+      width: '500px'
+    });
+  }
+
+  openGenreDialog(
+    name: string,
+    description: string
+  ): void {
+    this.dialog.open(GenreCardComponent, {
+      data: {
+        name,
+        description,
       },
       width: '500px'
     });

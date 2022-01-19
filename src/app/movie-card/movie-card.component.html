@@ -3,14 +3,12 @@
     <!-- <mat-dialog-content> -->
     <img src={{movie.ImagePath}} alt={{movie.Title}} />
     <mat-card-title>{{movie.Title}}</mat-card-title>
-    <!-- <mat-card-subtitle>
-      Director: {{movie.Director.Name}}
-    </mat-card-subtitle> -->
     <mat-card-actions>
       <button mat-button
         (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birth, movie.Director.Death)"
         color="primary">Director</button>
-      <button mat-button color="primary">Genre</button>
+      <button mat-button (click)="openDescriptionDialog(movie.Genre.Name, movie.Genre.Description)"
+        color="primary">Genre</button>
       <button mat-raised-button (click)="openDescriptionDialog(movie.Title, movie.Description)"
         color="primary">Description</button>
       <mat-icon>favorite_border</mat-icon>
