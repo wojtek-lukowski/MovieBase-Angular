@@ -11,14 +11,18 @@ export class UserEditComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      name: string;
-      bio: string;
-      birth: Date;
-      death: Date;
+      username: string;
+      password: string;
+      email: string;
+      birthday: Date;
     }
   ) { }
 
   ngOnInit(): void {
+  }
+
+  editUser(): void {
+    console.log('edit changes called');
   }
 
 }

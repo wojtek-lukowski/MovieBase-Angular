@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { UserEditComponent } from '../user-edit/user-edit.component';
-import { EmailValidator } from '@angular/forms';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
@@ -45,7 +44,7 @@ export class ProfileViewComponent implements OnInit {
     username: string,
     password: string,
     email: string,
-    birthday: string
+    birthday: Date
   ): void {
     this.dialog.open(UserEditComponent, {
       data: {

@@ -1,1 +1,27 @@
-<p>user-edit works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Edit your data
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.username" placeholder="Username" type="text" name="Username" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.password" placeholder="Password" type="password" name="Password" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.email" placeholder="Email" type="email" name="Email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.birthday" placeholder="Birthday" type="date" name="Birthday">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [mat-dialog-close]="true" color="primary">Discard changes</button>
+    <button mat-raised-button (click)="editUser()" color="primary">Save changes</button>
+  </mat-card-actions>
+</mat-card>
