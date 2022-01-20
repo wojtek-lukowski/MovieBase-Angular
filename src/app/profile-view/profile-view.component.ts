@@ -53,7 +53,7 @@ export class ProfileViewComponent implements OnInit {
         email,
         birthday
       },
-      width: '500px'
+      width: '320px'
     });
   }
 }
