@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
-
+import { UserEditComponent } from '../user-edit/user-edit.component';
+import { EmailValidator } from '@angular/forms';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
@@ -15,7 +17,8 @@ export class ProfileViewComponent implements OnInit {
 
   constructor(
     public fetchApiData: UserRegistrationService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +39,22 @@ export class ProfileViewComponent implements OnInit {
   logOut(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();
+  }
+
+  openUserEditDialog(
+    username: string,
+    password: string,
+    email: string,
+    birthday: string
+  ): void {
+    this.dialog.open(UserEditComponent, {
+      data: {
+        username,
+        password,
+        email,
+        birthday
+      },
+      width: '500px'
+    });
   }
 }

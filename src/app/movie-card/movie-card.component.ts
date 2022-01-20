@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+  username: any = localStorage.getItem('user');
+  user: any = JSON.parse(this.username);
 
   constructor(
     public dialog: MatDialog,
@@ -82,5 +84,4 @@ export class MovieCardComponent implements OnInit {
     this.router.navigate(['welcome']);
     localStorage.clear();
   }
-
 }
