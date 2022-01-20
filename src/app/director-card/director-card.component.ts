@@ -19,6 +19,7 @@ export class DirectorCardComponent implements OnInit {
     }) { }
 
   ngOnInit(): void {
+    console.log('directors card on init');
   }
 
 }

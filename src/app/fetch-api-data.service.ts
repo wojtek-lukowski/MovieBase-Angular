@@ -32,8 +32,8 @@ export class UserRegistrationService {
     const response = this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         {
-          // Authorization: 'Bearer' + token,
-          Authorization: `Bearer ${token}`
+          Authorization: 'Bearer ' + token,
+          // Authorization: `Bearer ${token}`
         }),
     });
     return response.pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -67,12 +67,25 @@ export class UserRegistrationService {
     );
   }
 
+  getGenres(): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'genres/', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
   getGenre(name: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'genres/' + name, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),
