@@ -1,1 +1,40 @@
-<p>profile-view works!</p>
+<header>
+  <button (click)="backToMovies()" mat-raised-button color="primary">Back</button>
+  <button (click)="logOut()" mat-raised-button color="primary">Log out</button>
+</header>
+
+<h1>Welcome, {{this.currentUser.Username}}</h1>
+
+<div>
+
+  <mat-card class="favs-section">
+    <mat-card-title>
+      Your fav movies:
+    </mat-card-title>
+    <mat-card-content class="favs-list">
+
+
+      <mat-card-content *ngFor="let fav of this.currentUser.Favorites; let i = index;" class="fav-card">
+        <img src="{{fav.ImagePath}} ">
+        <mat-card-title>{{fav.Title}}</mat-card-title>
+      </mat-card-content>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<mat-card>
+  <mat-card-title>
+    Your data:
+  </mat-card-title>
+  <mat-card-content>
+    <p>Username: {{this.currentUser.Username}}</p>
+  </mat-card-content>
+  <mat-card-content>
+    <p>Email: {{this.currentUser.Email}}</p>
+  </mat-card-content>
+  <mat-card-content>
+    <p>Birthdate: {{this.currentUser.Birthday | date:'longDate'}}</p>
+  </mat-card-content>
+</mat-card>

@@ -98,7 +98,7 @@ export class UserRegistrationService {
     return this.http.get(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -111,7 +111,7 @@ export class UserRegistrationService {
     return this.http.post(apiUrl + 'users/' + username + 'movies' + title, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -124,7 +124,7 @@ export class UserRegistrationService {
     return this.http.delete(apiUrl + 'users/' + username + 'movies' + title, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -137,7 +137,7 @@ export class UserRegistrationService {
     return this.http.delete(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -150,7 +150,7 @@ export class UserRegistrationService {
     return this.http.put(apiUrl + 'users' + username, {
       headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
     }).pipe(
       map(this.extractResponseData),

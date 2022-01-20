@@ -1,3 +1,13 @@
+<header>
+  <button (click)="openProfile()" mat-raised-button color="primary">Profile</button>
+  <button (click)="logOut()" mat-raised-button color="primary">Log out</button>
+</header>
+
+<!-- <mat-toolbar>
+    <button (click)="openProfile()" mat-raised-button color="primary">Profile</button>
+    <button (click)="openProfile()" mat-raised-button color="primary">Log out</button>
+  </mat-toolbar> -->
+
 <div>
   <mat-card *ngFor="let movie of movies; let i = index;">
     <!-- <mat-dialog-content> -->

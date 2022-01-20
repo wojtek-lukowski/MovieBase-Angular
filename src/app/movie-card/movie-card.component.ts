@@ -4,7 +4,7 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { DescriptionCardComponent } from '../description-card/description-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -16,6 +16,7 @@ export class MovieCardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public fetchApiData: UserRegistrationService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,6 +72,15 @@ export class MovieCardComponent implements OnInit {
       },
       width: '500px'
     });
+  }
+
+  openProfile(): void {
+    this.router.navigate(['profile']);
+  }
+
+  logOut(): void {
+    this.router.navigate(['welcome']);
+    localStorage.clear();
   }
 
 }

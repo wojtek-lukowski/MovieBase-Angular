@@ -25,3 +25,12 @@ img {
 .mat-card-actions {
 margin-top: 16px;
 }
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+  gap: 36px;
+  border-bottom: 1px solid blue;
+  margin-bottom: 36px;
+}
