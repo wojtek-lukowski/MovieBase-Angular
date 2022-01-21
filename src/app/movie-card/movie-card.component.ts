@@ -5,6 +5,7 @@ import { DescriptionCardComponent } from '../description-card/description-card.c
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -14,21 +15,23 @@ export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   username: any = localStorage.getItem('user');
   user: any = JSON.parse(this.username);
+  favs: any[] = this.user.Favorites;
 
   constructor(
     public dialog: MatDialog,
     public fetchApiData: UserRegistrationService,
-    public router: Router
+    public router: Router,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
     this.getMovies();
+    console.log('favs', this.favs);
   }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
     });
   }
@@ -83,5 +86,13 @@ export class MovieCardComponent implements OnInit {
   logOut(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();
+  }
+
+  addToFavs(movieId: string): void {
+    console.log('user', this.user.Username);
+    console.log('movies', this.movies);
+    this.fetchApiData.addToFavs(this.user.Username, movieId).subscribe((resp: any) => {
+      this.snackBar.open('Added to favs', 'OK', { duration: 4000 });
+    });
   }
 }

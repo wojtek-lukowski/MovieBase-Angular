@@ -24,11 +24,11 @@ export class RemoveUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('user: ', this.currentUser);
   }
 
   removeUser(): void {
     this.fetchApiData.removeUser(this.username).subscribe((response) => {
+      console.log('response', response);
       console.log('removing user:', this.username);
       this.snackbar.open('Your account has been removed', 'Bye', { duration: 4000 });
       this.currentUser = null;
