@@ -24,6 +24,7 @@ import { DescriptionCardComponent } from './description-card/description-card.co
 import { DirectorCardComponent } from './director-card/director-card.component';
 import { GenreCardComponent } from './genre-card/genre-card.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { RemoveUserComponent } from './remove-user/remove-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     DescriptionCardComponent,
     DirectorCardComponent,
     GenreCardComponent,
-    UserEditComponent
+    UserEditComponent,
+    RemoveUserComponent
   ],
   imports: [
     BrowserModule,

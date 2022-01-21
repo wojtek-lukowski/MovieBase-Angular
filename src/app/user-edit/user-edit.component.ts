@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
     this.fetchApiData.editUser(this.data.username, this.userData).subscribe((resp: any) => {
       this.dialogRef.close();
       localStorage.setItem('user', JSON.stringify(resp));
-      this.snackbar.open(resp, 'Data successfully updated', { duration: 4000 })
+      this.snackbar.open('Data successfully updated', 'OK', { duration: 4000 })
     });
   }
 
