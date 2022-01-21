@@ -37,6 +37,7 @@
     <p>Birthdate: {{this.currentUser.Birthday | date:'longDate'}}</p>
   </mat-card-content>
   <mat-card-actions>
+    <button mat-button color="warn">Remove account</button>
     <button mat-raised-button color="primary"
       (click)="openUserEditDialog(currentUser.Username, currentUser.Password, currentUser.Email, currentUser.Birthday)">Edit
       data</button>

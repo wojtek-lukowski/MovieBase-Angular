@@ -32,7 +32,7 @@ export class UserLoginFormComponent implements OnInit {
       this.router.navigate(['movies']);
     }, (response) => {
       console.log(response);
-      this.snackBar.open(response, 'OK', { duration: 500 });
+      this.snackBar.open(response, 'OK', { duration: 4000 });
     });
   }
 
