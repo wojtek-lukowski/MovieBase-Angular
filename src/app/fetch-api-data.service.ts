@@ -108,7 +108,6 @@ export class UserRegistrationService {
 
   addToFavs(username: string, MovieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    console.log('token', token);
     return this.http.post(apiUrl + 'users/' + username + '/movies/' + MovieId, {}, {
       headers: new HttpHeaders(
         {

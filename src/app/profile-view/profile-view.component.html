@@ -15,7 +15,7 @@
       <mat-card-content *ngFor="let fav of this.currentUser.Favorites; let i = index;" class="fav-card">
         <img src="{{fav.ImagePath}} ">
         <mat-card-title>{{fav.Title}}</mat-card-title>
-        <mat-icon (click)="removeFromFavs(fav._id)">favorite_border</mat-icon>
+        <mat-icon (click)="removeFromFavs(fav._id)">favorite</mat-icon>
       </mat-card-content>
     </mat-card-content>
 

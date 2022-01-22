@@ -69,8 +69,8 @@ export class ProfileViewComponent implements OnInit {
   removeFromFavs(movieId: string): void {
     console.log('user', this.currentUsername);
     this.fetchApiData.removeFromFavs(this.currentUsername, movieId).subscribe((resp: any) => {
-      window.location.reload();
-      this.snackBar.open('Added to favs', 'OK', { duration: 4000 });
+      this.ngOnInit();
+      this.snackBar.open('Removed from favs', 'OK', { duration: 4000 });
     });
   }
 }
