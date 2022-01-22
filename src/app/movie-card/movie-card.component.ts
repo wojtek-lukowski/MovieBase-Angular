@@ -146,6 +146,7 @@ export class MovieCardComponent implements OnInit {
 
   removeFromFavs(movieId: string): void {
     this.fetchApiData.removeFromFavs(this.user.Username, movieId).subscribe((resp: any) => {
+      this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
       this.getCurrentUser(this.user.Username);
       this.ngOnInit();
       2000
