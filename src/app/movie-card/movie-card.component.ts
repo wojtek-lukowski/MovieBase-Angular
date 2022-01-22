@@ -49,13 +49,6 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // favCheck(movieId: string): void {
-  //   if (this.currentFavs.filter(function (e: any) { return e._id === movieId; }).length > 0) {
-  //     this.isInFavs = true;
-  //     return
-  //   }
-  // }
-
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
