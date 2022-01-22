@@ -24,14 +24,7 @@
         color="primary">Genre</button>
       <button mat-raised-button (click)="openDescriptionDialog(movie.Title, movie.Description)"
         color="primary">Description</button>
-
       <mat-icon (click)="toggleFavs(movie._id)" [color]="toggleHeart(movie._id)">favorite</mat-icon>
-
-      <!-- <mat-icon (click)="addToFavs(movie._id)">favorite_border</mat-icon>
-      <mat-icon (click)="removeFromFavs(movie._id)">favorite</mat-icon> -->
-
-      <!-- <mat-icon *ngIf="!isInFavs" (click)="addToFavs(movie._id)">favorite_border</mat-icon>
-      <mat-icon *ngIf="isInFavs" (click)="removeFromFavs(movie._id)">favorite</mat-icon> -->
     </mat-card-actions>
     <!-- </mat-dialog-content> -->
   </mat-card>

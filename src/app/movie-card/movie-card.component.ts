@@ -27,24 +27,24 @@ export class MovieCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('calling onInit');
+    // console.log('calling onInit');
     this.getMovies();
-    console.log('onInit calling getMovies');
+    // console.log('onInit calling getMovies');
     this.getCurrentUser(this.user.Username);
-    console.log('onInit calling getCurentUser');
-    console.log('curent favs from onInit: ', this.currentFavs);
+    // console.log('onInit calling getCurentUser');
+    // console.log('curent favs from onInit: ', this.currentFavs);
     // this.favCheck(movieId);
   }
 
   getCurrentUser(username: string): void {
-    console.log('calling getCurrentUser');
+    // console.log('calling getCurrentUser');
     this.fetchApiData.getUser(username).subscribe((resp: any) => {
       this.currentUser = resp;
       // console.log('current user: ', this.currentUser);
       // console.log('response: ', resp);
       this.currentFavs = resp.Favorites;
       // console.log('response favs: ', resp.Favorites);
-      console.log('current favs from getCurrentUser: ', this.currentFavs);
+      // console.log('current favs from getCurrentUser: ', this.currentFavs);
       return (this.currentUser, this.currentFavs);
     });
   }
@@ -119,9 +119,11 @@ export class MovieCardComponent implements OnInit {
   toggleFavs(movieId: string): void {
     if (this.currentFavs.filter(function (e: any) { return e._id === movieId; }).length > 0) {
       this.removeFromFavs(movieId);
+      console.log(movieId, 'removed form favs');
       this.isInFavs = false;
     } else {
       this.addToFavs(movieId)
+      console.log(movieId, 'added to favs');
       this.isInFavs = true;
     }
   }
@@ -133,7 +135,7 @@ export class MovieCardComponent implements OnInit {
       return
     } else {
       this.fetchApiData.addToFavs(this.user.Username, movieId).subscribe((resp: any) => {
-        console.log('adding ', movieId);
+        // console.log('adding ', movieId);
         // window.location.reload;
         this.getCurrentUser(this.user.Username);
         this.ngOnInit();
@@ -152,6 +154,6 @@ export class MovieCardComponent implements OnInit {
 
   toggleHeart(movieId: string): string {
     let favIds = this.currentFavs.map(function (fav: any) { return fav._id });
-    return favIds.includes(movieId) ? 'warn' : 'accent';
+    return favIds.includes(movieId) ? 'warn' : 'primary';
   }
 }
