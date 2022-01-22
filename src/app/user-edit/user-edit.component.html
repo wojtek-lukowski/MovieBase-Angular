@@ -7,16 +7,19 @@
   <mat-card-content>
     <form>
       <mat-form-field>
-        <input matInput [(ngModel)]="data.username" placeholder="Username" type="text" name="Username" required>
+        <input matInput [(ngModel)]="newData.Username" placeholder="Username" value={{data.username}} type="text"
+          name="Username" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Password" type="password" name="Password" required>
+        <input matInput [(ngModel)]="newData.Password" placeholder="Password" type="password" name="Password" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="data.email" placeholder="Email" type="email" name="Email" required>
+        <input matInput [(ngModel)]="newData.Email" placeholder="Email" value={{data.email}} type="email" name="Email"
+          required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="data.birthday" placeholder="Birthday" type="date" name="Birthday">
+        <input matInput [(ngModel)]="newData.Birthday" placeholder="Birthday" value={{data.birthday}} type="date"
+          name="Birthday">
       </mat-form-field>
     </form>
   </mat-card-content>

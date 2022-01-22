@@ -113,7 +113,6 @@ export class UserRegistrationService {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
-          // Authorization: `Bearer ${token}`,
         })
     }).pipe(
       map(this.extractResponseData),
@@ -150,7 +149,7 @@ export class UserRegistrationService {
 
   editUser(username: string, updatedInfo: object): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + username, {
+    return this.http.put(apiUrl + 'users/' + username, updatedInfo, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

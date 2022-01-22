@@ -11,9 +11,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserEditComponent implements OnInit {
 
+  @Input() newData = { Username: '', Password: '', Email: '', Birthday: '' };
+
   userData: any = {
     Username: this.data.username,
-    Password: '',
+    Password: this.data.password,
     Email: this.data.email,
     Birthday: this.data.birthday
   };
@@ -35,15 +37,18 @@ export class UserEditComponent implements OnInit {
   }
 
   editUser(): void {
-    console.log('edit changes called');
-    console.log('userData:', this.userData);
-    console.log('username', this.data.username);
-    console.log('birthday', this.data.birthday);
-    this.fetchApiData.editUser(this.data.username, this.userData).subscribe((resp: any) => {
-      this.dialogRef.close();
-      localStorage.setItem('user', JSON.stringify(resp));
-      this.snackbar.open('Data successfully updated', 'OK', { duration: 4000 })
-    });
+    //prevent sending an empty field (that would erase the previous data and replace it with null)
+    if (this.newData.Username && this.newData.Password && this.newData.Email && this.newData.Birthday) {
+      this.fetchApiData.editUser(this.data.username, this.newData).subscribe((resp: any) => {
+        this.dialogRef.close();
+        window.location.reload();
+        localStorage.setItem('user', JSON.stringify(resp));
+        this.snackbar.open('Data successfully updated', 'OK', { duration: 4000 })
+      });
+      //alert when submitting an empty field
+    } else {
+      this.snackbar.open('Plase fill all the fields', 'OK', { duration: 6000 })
+    }
   }
 
 }
