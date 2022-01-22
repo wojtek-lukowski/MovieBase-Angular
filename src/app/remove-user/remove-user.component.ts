@@ -27,11 +27,11 @@ export class RemoveUserComponent implements OnInit {
   }
 
   removeUser(): void {
-    this.fetchApiData.removeUser(this.username).subscribe((response) => {
+    this.fetchApiData.removeUser(this.username!).subscribe((response) => {
       window.location.reload();
       console.log('response', response);
       console.log('removing user:', this.username);
-      this.snackbar.open('Your account has been removed', 'Bye', { duration: 4000 });
+      this.snackbar.open('Your account has been removed', 'Bye', { duration: 2000 });
       this.currentUser = null;
       this.username = '';
       this.dialogRef.close();
