@@ -5,7 +5,6 @@
 
 <h1>Welcome, {{this.user.Username}}</h1>
 
-
 <!-- <mat-toolbar>
     <button (click)="openProfile()" mat-raised-button color="primary">Profile</button>
     <button (click)="openProfile()" mat-raised-button color="primary">Log out</button>
@@ -13,7 +12,6 @@
 
 <div>
   <mat-card *ngFor="let movie of movies; let i = index;">
-    <!-- <mat-dialog-content> -->
     <img src={{movie.ImagePath}} alt={{movie.Title}} />
     <mat-card-title>{{movie.Title}}</mat-card-title>
     <mat-card-actions>
@@ -24,8 +22,11 @@
         color="primary">Genre</button>
       <button mat-raised-button (click)="openDescriptionDialog(movie.Title, movie.Description)"
         color="primary">Description</button>
-      <mat-icon (click)="toggleFavs(movie._id)" [color]="toggleHeart(movie._id)">favorite</mat-icon>
+      <!-- <mat-icon (click)="toggleFavs(movie._id)" [color]="toggleHeart(movie._id)">favorite</mat-icon> -->
+      <mat-icon *ngIf="favCheck(movie._id)" (click)="toggleFavs(movie._id)" color="primary">favorite</mat-icon>
+      <mat-icon *ngIf="!favCheck(movie._id)" (click)="toggleFavs(movie._id)" color="primary">favorite_border
+      </mat-icon>
+
     </mat-card-actions>
-    <!-- </mat-dialog-content> -->
   </mat-card>
 </div>

@@ -41,13 +41,12 @@ export class UserEditComponent implements OnInit {
     if (this.newData.Username && this.newData.Password && this.newData.Email && this.newData.Birthday) {
       this.fetchApiData.editUser(this.data.username, this.newData).subscribe((resp: any) => {
         this.dialogRef.close();
-        window.location.reload();
         localStorage.setItem('user', JSON.stringify(resp));
-        this.snackbar.open('Data successfully updated', 'OK', { duration: 4000 })
+        this.snackbar.open('Data successfully updated', 'OK', { duration: 2000 })
       });
       //alert when submitting an empty field
     } else {
-      this.snackbar.open('Plase fill all the fields', 'OK', { duration: 6000 })
+      this.snackbar.open('Plase fill all the fields', 'OK', { duration: 2000 })
     }
   }
 

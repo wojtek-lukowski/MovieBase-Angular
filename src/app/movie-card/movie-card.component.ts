@@ -152,8 +152,16 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  toggleHeart(movieId: string): string {
+  // toggleHeart(movieId: string): string {
+  //   let favIds = this.currentFavs.map(function (fav: any) { return fav._id });
+  //   return favIds.includes(movieId) ? 'warn' : 'primary';
+  // }
+
+  favCheck(movieId: string): any {
     let favIds = this.currentFavs.map(function (fav: any) { return fav._id });
-    return favIds.includes(movieId) ? 'warn' : 'primary';
+    if (favIds.includes(movieId)) {
+      this.isInFavs = true;
+      return this.isInFavs;
+    };
   }
 }
