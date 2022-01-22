@@ -120,12 +120,11 @@ export class UserRegistrationService {
     );
   }
 
-  removeFromFavs(username: string, title: string): Observable<any> {
+  removeFromFavs(username: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + username + 'movies' + title, {
+    return this.http.delete(apiUrl + 'users/' + username + '/movies/' + movieId, {
       headers: new HttpHeaders(
         {
-          // Authorization: 'Bearer ' + token,
           Authorization: `Bearer ${token}`,
         })
     }).pipe(
@@ -140,6 +139,7 @@ export class UserRegistrationService {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
+          responseType: 'text'
         })
     }).pipe(
       map(this.extractResponseData),

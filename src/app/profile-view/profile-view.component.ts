@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { RemoveUserComponent } from '../remove-user/remove-user.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
@@ -18,7 +19,8 @@ export class ProfileViewComponent implements OnInit {
   constructor(
     public fetchApiData: UserRegistrationService,
     public router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -61,6 +63,14 @@ export class ProfileViewComponent implements OnInit {
   openRemoveUserDialog(): void {
     this.dialog.open(RemoveUserComponent, {
       width: '320px'
+    });
+  }
+
+  removeFromFavs(movieId: string): void {
+    console.log('user', this.currentUsername);
+    this.fetchApiData.removeFromFavs(this.currentUsername, movieId).subscribe((resp: any) => {
+      window.location.reload();
+      this.snackBar.open('Added to favs', 'OK', { duration: 4000 });
     });
   }
 }

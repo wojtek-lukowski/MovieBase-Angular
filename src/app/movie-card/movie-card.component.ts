@@ -26,7 +26,6 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    console.log('favs', this.favs);
   }
 
   getMovies(): void {
@@ -92,6 +91,14 @@ export class MovieCardComponent implements OnInit {
     console.log('user', this.user.Username);
     console.log('movies', this.movies);
     this.fetchApiData.addToFavs(this.user.Username, movieId).subscribe((resp: any) => {
+      this.snackBar.open('Added to favs', 'OK', { duration: 4000 });
+    });
+  }
+
+  removeFromFavs(movieId: string): void {
+    console.log('user', this.user.Username);
+    console.log('movies', this.movies);
+    this.fetchApiData.removeFromFavs(this.user.Username, movieId).subscribe((resp: any) => {
       this.snackBar.open('Added to favs', 'OK', { duration: 4000 });
     });
   }
