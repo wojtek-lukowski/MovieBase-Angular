@@ -19,18 +19,23 @@ h1 {
   display: flex;
   column-gap: 12px;
   padding-top: 32px;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding-top: 0;
 }
 
 .mat-card {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding-bottom: 24px;
-  width: 200px;
+  display: grid;
+  grid-template:
+    [row1-start] "img img"  auto [row1-end]
+    [row2-start] "title title" auto [row2-end]
+    [row3-start] "actions actions" 40px[row3-end]
+    [row4-start] "actions actions" 40px [row4-end]
+    / 90px 90px;
+  }
+
+.mat-card-title {
+  grid-area: title;
+  line-height: 1.2;
 }
 
 .mat-card-actions {
@@ -38,16 +43,16 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 16px;
+  grid-area: actions;
 }
 
 img {
-  // text-align: center;
+  grid-area: img;
+  object-fit: contain;
   align-self: center;
   width: 100%;
   height: auto;
   margin-bottom: 24px;
-  // margin-left: 50%;
-  // transform: translate(-50%);
 }
 
 .fav-icon:hover {
