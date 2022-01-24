@@ -41,6 +41,7 @@ export class UserEditComponent implements OnInit {
     if (this.newData.Username && this.newData.Password && this.newData.Email && this.newData.Birthday) {
       this.fetchApiData.editUser(this.data.username, this.newData).subscribe((resp: any) => {
         this.dialogRef.close();
+        window.location.reload();
         localStorage.setItem('user', JSON.stringify(resp));
         this.snackbar.open('Data successfully updated', 'OK', { duration: 2000 })
       });

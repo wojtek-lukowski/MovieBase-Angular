@@ -135,10 +135,10 @@ export class UserRegistrationService {
   removeUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + username, {
+      responseType: 'text',
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
-          responseType: 'text'
         })
     }).pipe(
       map(this.extractResponseData),
@@ -168,6 +168,7 @@ export class UserRegistrationService {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
     } else {
+      console.log(error);
       console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`);
