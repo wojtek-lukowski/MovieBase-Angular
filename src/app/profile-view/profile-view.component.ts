@@ -15,6 +15,8 @@ export class ProfileViewComponent implements OnInit {
   UserFromStorage: any = localStorage.getItem('user');
   currentUser: any = (JSON.parse(this.UserFromStorage));
   currentUsername: any = this.currentUser.Username;
+  currentFavs: any = this.currentUser.Favorites;
+  favsEmpty: boolean = true;
 
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -30,6 +32,8 @@ export class ProfileViewComponent implements OnInit {
   getCurrentUser(currentUser: string): void {
     this.fetchApiData.getUser(currentUser).subscribe((resp: any) => {
       this.currentUser = resp;
+      this.currentFavs = this.currentUser.Favorites;
+      this.areFavsEmpty();
       return this.currentUser;
     });
   }
@@ -67,10 +71,20 @@ export class ProfileViewComponent implements OnInit {
   }
 
   removeFromFavs(movieId: string): void {
-    console.log('user', this.currentUsername);
     this.fetchApiData.removeFromFavs(this.currentUsername, movieId).subscribe((resp: any) => {
       this.ngOnInit();
-      this.snackBar.open('Removed from favs', 'OK', { duration: 4000 });
+      this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
     });
+    this.ngOnInit();
+  }
+
+  //checking whether favs are empty to create a boolean var for conditional rendering of "empty favs" message
+  areFavsEmpty(): any {
+    if (this.currentFavs.length == 0) {
+      this.favsEmpty = true;
+    } else {
+      this.favsEmpty = false;
+    }
+    return this.favsEmpty;
   }
 }

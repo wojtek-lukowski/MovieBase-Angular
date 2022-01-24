@@ -10,7 +10,7 @@
       Your fav movies:
     </mat-card-title>
     <mat-card-content class="favs-list">
-      <mat-card-content *ngIf="!this.currentUser.Favorites">Looks like you have not added any titles to your favorites.
+      <mat-card-content *ngIf="favsEmpty">Looks like you have not added any titles to your favorites.
       </mat-card-content>
       <mat-card-content *ngFor="let fav of this.currentUser.Favorites; let i = index;" class="fav-card">
         <img src="{{fav.ImagePath}} ">
