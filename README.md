@@ -2,6 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
+This is the Angul;ar version of the client-side respository for the MoviBase application allowing users to view the details of the movies from the data base.
+
+[The server-side part repository can be viewed here.](https://github.com/wojtek-lukowski/MovieBase)
+
+Users need to create account and all the available movies will be displayed upon login. Then they can review particular titles, as well as their directors and genres. Users can also edit their profile data.
+
+Except the Angular version, an alternative, independent React client-side part, using the same backend, has also been developed and can be ssen here: [GitHub](https://github.com/wojtek-lukowski/MovieBase-client).
+
+[The project can be run here.](https://wojtek-lukowski.github.io/MovieBase-Angular)
+
+
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
