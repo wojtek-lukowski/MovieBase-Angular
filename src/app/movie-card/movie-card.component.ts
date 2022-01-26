@@ -98,7 +98,13 @@ export class MovieCardComponent implements OnInit {
     localStorage.clear();
   }
 
-
+  /**
+   * Add to favs if the title is not in favs,
+   * removes from favs, if the title is in favs
+   * (called by clicking the heart icon)
+   * @param movieId
+   * @returns isInFavs
+   */
   toggleFavs(movieId: string): void {
     if (this.currentFavs.filter(function (e: any) { return e._id === movieId; }).length > 0) {
       this.removeFromFavs(movieId);
